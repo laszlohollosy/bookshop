@@ -1,0 +1,23 @@
+<div class="section-heading book-container" ng-if="book">
+    <h2>{{ book.volumeInfo.title}}</h2>
+    <p class="text-muted">
+        <span ng-repeat="author in book.volumeInfo.authors">
+            {{ author }},
+        </span>
+    </p>
+    <hr>
+    <div class="row">
+        <div class="col-md-3 text-right">
+            <img ng-src="{{ book.volumeInfo.imageLinks.thumbnail || '/img/no-img-placeholder.jpg' }}">
+        </div>
+        <div class="col-md-9 text-left">
+            <div class="description">
+                {{ book.volumeInfo.description || 'There is no description for this book!' }}
+            </div>
+            <br>
+            <ngcart-addtocart id="{{ book.id}}" name="{{ book.volumeInfo.title}}" price="0" quantity="1" data="book">Add to Cart</ngcart-addtocart>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-warning" ng-if="!book">There is no previously visited book!</div>
